@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.context.ApplicationContext;
 
 /**
  * Main Class.
@@ -20,14 +21,6 @@ public class Parser {
     private static final Logger LOGGER =
             LoggerFactory.getLogger(Parser.class);
     
-    @Autowired
-    private static JobLauncher jobLauncher;
-    /**
-     * Data Job.
-     */
-    @Autowired
-    private static Job job;
-    
     /**
      * Main Method.
      *
@@ -35,7 +28,9 @@ public class Parser {
      * @throws Exception
      */
     public static void main(String[] args) throws Exception {
-        SpringApplication.run(Parser.class, args);
+        ApplicationContext ctx = SpringApplication.run(Parser.class, args);
+        String startDate = ctx.getEnvironment().getProperty("startDate");
+        LOGGER.info(startDate);
     }
     
 }

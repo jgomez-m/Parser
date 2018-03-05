@@ -1,5 +1,6 @@
 package com.ef.config;
 
+import java.util.Arrays;
 import java.util.Date;
 import javax.annotation.PostConstruct;
 import org.slf4j.Logger;
@@ -13,8 +14,13 @@ import org.springframework.batch.core.repository.JobExecutionAlreadyRunningExcep
 import org.springframework.batch.core.repository.JobInstanceAlreadyCompleteException;
 import org.springframework.batch.core.repository.JobRestartException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
+import org.springframework.core.env.Environment;
+
+import com.ef.Loader;
 
 /**
  * Provided class to configuration.
@@ -29,7 +35,7 @@ import org.springframework.context.annotation.ImportResource;
     "classpath:applicationContext-db.xml",
     "file:config/applicationContext-batch.xml"
 })
-public class Bootstrap {
+public class Bootstrap{
 
     /**
      * Logger.
@@ -37,42 +43,5 @@ public class Bootstrap {
     private static final Logger LOGGER =
         LoggerFactory.getLogger(Bootstrap.class);
 
-    /**
-     * Job launcher.
-     */
-    @Autowired
-    private JobLauncher jobLauncher;
-    /**
-     * Data Job.
-     */
-    @Autowired
-    private Job job;
-
-    /**
-     * Initialization Method.
-     */
-    @PostConstruct
-    public void init() {
-        try {
-            long start = System.currentTimeMillis();
-            LOGGER.info("<<<<<<<<<<<<<START>>>>>>>>>>>>>>: " + new Date(start));
-
-            JobExecution execution = this.jobLauncher.run(this.job,
-                new JobParameters());
-
-            LOGGER.info("<<<<<<<<<<<<<Exit Status>>>>>>>>>>>>>>: " +
-                execution.getStatus());
-
-            long end = System.currentTimeMillis();
-            LOGGER.info("<<<<<<<<<<<<<END>>>>>>>>>>>>>>: " + new Date(end));
-
-            LOGGER.info("<<<<<<<<<<<<<TIME IN MILLIS:>>>>>>>>>>>>>>" +
-                (end - start));
-
-            System.exit(0);
-        } catch (JobExecutionAlreadyRunningException | JobRestartException |
-            JobInstanceAlreadyCompleteException | JobParametersInvalidException ex) {
-            LOGGER.error("Error", ex);
-        }
-    }
+    
 }
