@@ -1602,3 +1602,69 @@ Action:
 
 Consider defining a bean of type 'org.springframework.batch.core.configuration.ListableJobLocator' in your configuration.
 
+2018-03-05 20:40:01 INFO  c.e.Loader:48 - Starting Loader on JULIAN-DESKTOP with PID 11396 (D:\workspace\Parser\target\classes started by Julian G in D:\workspace\Parser)
+2018-03-05 20:40:01 INFO  c.e.Loader:593 - No active profile set, falling back to default profiles: default
+2018-03-05 20:40:01 INFO  o.s.c.a.AnnotationConfigApplicationContext:583 - Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@6c9f5c0d: startup date [Mon Mar 05 20:40:01 COT 2018]; root of context hierarchy
+2018-03-05 20:40:02 INFO  o.s.b.f.x.XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [applicationContext-db.xml]
+2018-03-05 20:40:02 INFO  o.s.b.f.x.XmlBeanDefinitionReader:317 - Loading XML bean definitions from URL [file:config/applicationContext-batch.xml]
+2018-03-05 20:40:03 INFO  o.s.b.c.l.s.SimpleJobLauncher:195 - No TaskExecutor has been set, defaulting to synchronous executor.
+2018-03-05 20:40:03 INFO  c.z.h.HikariDataSource:70 - springHikariCP - Started.
+2018-03-05 20:40:03 INFO  c.e.Loader:62 - <<<<<<<<<<<<<START>>>>>>>>>>>>>>: Mon Mar 05 20:40:03 COT 2018
+2018-03-05 20:40:04 INFO  o.s.b.c.l.s.SimpleJobLauncher:133 - Job: [FlowJob: [name=dataJob]] launched with the following parameters: [{}]
+2018-03-05 20:40:04 INFO  o.s.b.c.j.SimpleStepHandler:146 - Executing step: [step1]
+2018-03-05 20:40:06 INFO  o.s.b.c.l.s.SimpleJobLauncher:136 - Job: [FlowJob: [name=dataJob]] completed with the following parameters: [{}] and the following status: [COMPLETED]
+2018-03-05 20:40:06 INFO  c.e.Loader:66 - <<<<<<<<<<<<<Exit Status>>>>>>>>>>>>>>: COMPLETED
+2018-03-05 20:40:06 INFO  c.e.Loader:69 - <<<<<<<<<<<<<END>>>>>>>>>>>>>>: Mon Mar 05 20:40:06 COT 2018
+2018-03-05 20:40:06 INFO  c.e.Loader:71 - <<<<<<<<<<<<<TIME IN MILLIS:>>>>>>>>>>>>>>2894
+2018-03-05 20:40:07 INFO  o.s.j.d.i.ScriptUtils:441 - Executing SQL script from class path resource [org/springframework/batch/core/schema-mysql.sql]
+2018-03-05 20:40:07 INFO  o.s.j.d.i.ScriptUtils:507 - Executed SQL script from class path resource [org/springframework/batch/core/schema-mysql.sql] in 225 ms.
+2018-03-05 20:40:07 WARN  o.s.c.a.AnnotationConfigApplicationContext:551 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'jobOperator' defined in class path resource [org/springframework/boot/autoconfigure/batch/BatchAutoConfiguration.class]: Unsatisfied dependency expressed through method 'jobOperator' parameter 2; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.batch.core.configuration.ListableJobLocator' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2018-03-05 20:40:07 INFO  o.s.j.e.a.AnnotationMBeanExporter:449 - Unregistering JMX-exposed beans on shutdown
+2018-03-05 20:40:07 INFO  c.z.h.p.HikariPool:204 - springHikariCP - Close initiated...
+2018-03-05 20:40:07 INFO  c.z.h.p.HikariPool:241 - springHikariCP - Closed.
+2018-03-05 20:40:07 INFO  o.s.b.a.l.AutoConfigurationReportLoggingInitializer:101 - 
+
+Error starting ApplicationContext. To display the auto-configuration report re-run your application with 'debug' enabled.
+2018-03-05 20:40:07 ERROR o.s.b.d.LoggingFailureAnalysisReporter:42 - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 2 of method jobOperator in org.springframework.boot.autoconfigure.batch.BatchAutoConfiguration required a bean of type 'org.springframework.batch.core.configuration.ListableJobLocator' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'org.springframework.batch.core.configuration.ListableJobLocator' in your configuration.
+
+2018-03-05 20:40:35 INFO  c.e.Loader:48 - Starting Loader on JULIAN-DESKTOP with PID 6336 (D:\workspace\Parser\target\classes started by Julian G in D:\workspace\Parser)
+2018-03-05 20:40:35 INFO  c.e.Loader:593 - No active profile set, falling back to default profiles: default
+2018-03-05 20:40:35 INFO  o.s.c.a.AnnotationConfigApplicationContext:583 - Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@6c9f5c0d: startup date [Mon Mar 05 20:40:35 COT 2018]; root of context hierarchy
+2018-03-05 20:40:36 INFO  o.s.b.f.x.XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [applicationContext-db.xml]
+2018-03-05 20:40:36 INFO  o.s.b.f.x.XmlBeanDefinitionReader:317 - Loading XML bean definitions from URL [file:config/applicationContext-batch.xml]
+2018-03-05 20:40:37 INFO  o.s.b.c.l.s.SimpleJobLauncher:195 - No TaskExecutor has been set, defaulting to synchronous executor.
+2018-03-05 20:40:37 INFO  c.z.h.HikariDataSource:70 - springHikariCP - Started.
+2018-03-05 20:40:37 INFO  c.e.Loader:62 - <<<<<<<<<<<<<START>>>>>>>>>>>>>>: Mon Mar 05 20:40:37 COT 2018
+2018-03-05 20:40:37 INFO  o.s.b.c.l.s.SimpleJobLauncher:133 - Job: [FlowJob: [name=dataJob]] launched with the following parameters: [{}]
+2018-03-05 20:40:37 INFO  o.s.b.c.j.SimpleStepHandler:146 - Executing step: [step1]
+2018-03-05 20:40:39 INFO  o.s.b.c.l.s.SimpleJobLauncher:136 - Job: [FlowJob: [name=dataJob]] completed with the following parameters: [{}] and the following status: [COMPLETED]
+2018-03-05 20:40:39 INFO  c.e.Loader:66 - <<<<<<<<<<<<<Exit Status>>>>>>>>>>>>>>: COMPLETED
+2018-03-05 20:40:39 INFO  c.e.Loader:69 - <<<<<<<<<<<<<END>>>>>>>>>>>>>>: Mon Mar 05 20:40:39 COT 2018
+2018-03-05 20:40:39 INFO  c.e.Loader:71 - <<<<<<<<<<<<<TIME IN MILLIS:>>>>>>>>>>>>>>2256
+2018-03-05 20:40:58 INFO  c.e.Parser:48 - Starting Parser on JULIAN-DESKTOP with PID 1656 (D:\workspace\Parser\target\classes started by Julian G in D:\workspace\Parser)
+2018-03-05 20:40:58 INFO  c.e.Parser:593 - No active profile set, falling back to default profiles: default
+2018-03-05 20:40:58 INFO  o.s.c.a.AnnotationConfigApplicationContext:583 - Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@4f51b3e0: startup date [Mon Mar 05 20:40:58 COT 2018]; root of context hierarchy
+2018-03-05 20:40:59 INFO  o.s.b.f.x.XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [applicationContext-db.xml]
+2018-03-05 20:40:59 INFO  o.s.b.f.x.XmlBeanDefinitionReader:317 - Loading XML bean definitions from URL [file:config/applicationContext-batch.xml]
+2018-03-05 20:41:00 INFO  o.s.b.c.l.s.SimpleJobLauncher:195 - No TaskExecutor has been set, defaulting to synchronous executor.
+2018-03-05 20:41:00 INFO  c.z.h.HikariDataSource:70 - springHikariCP - Started.
+2018-03-05 20:41:00 INFO  c.e.Loader:62 - <<<<<<<<<<<<<START>>>>>>>>>>>>>>: Mon Mar 05 20:41:00 COT 2018
+2018-03-05 20:41:01 INFO  o.s.b.c.l.s.SimpleJobLauncher:133 - Job: [FlowJob: [name=dataJob]] launched with the following parameters: [{}]
+2018-03-05 20:41:01 INFO  o.s.b.c.j.SimpleStepHandler:146 - Executing step: [step1]
+2018-03-05 20:41:03 INFO  o.s.b.c.l.s.SimpleJobLauncher:136 - Job: [FlowJob: [name=dataJob]] completed with the following parameters: [{}] and the following status: [COMPLETED]
+2018-03-05 20:41:03 INFO  c.e.Loader:66 - <<<<<<<<<<<<<Exit Status>>>>>>>>>>>>>>: COMPLETED
+2018-03-05 20:41:03 INFO  c.e.Loader:69 - <<<<<<<<<<<<<END>>>>>>>>>>>>>>: Mon Mar 05 20:41:03 COT 2018
+2018-03-05 20:41:03 INFO  c.e.Loader:71 - <<<<<<<<<<<<<TIME IN MILLIS:>>>>>>>>>>>>>>2420

@@ -70,7 +70,7 @@ public class Loader implements ApplicationRunner {
 
 			LOGGER.info("<<<<<<<<<<<<<TIME IN MILLIS:>>>>>>>>>>>>>>" + (end - start));
 
-			return;
+			System.exit(0);
 		} catch (JobExecutionAlreadyRunningException | JobRestartException | JobInstanceAlreadyCompleteException
 				| JobParametersInvalidException ex) {
 			LOGGER.error("Error", ex);
