@@ -1,8 +1,9 @@
 package com.ef.config;
 
-import java.util.Arrays;
 import java.util.Date;
+
 import javax.annotation.PostConstruct;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.batch.core.Job;
@@ -14,13 +15,10 @@ import org.springframework.batch.core.repository.JobExecutionAlreadyRunningExcep
 import org.springframework.batch.core.repository.JobInstanceAlreadyCompleteException;
 import org.springframework.batch.core.repository.JobRestartException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.ApplicationArguments;
-import org.springframework.boot.ApplicationRunner;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
-import org.springframework.core.env.Environment;
-
-import com.ef.Loader;
+import org.springframework.util.StringUtils;
 
 /**
  * Provided class to configuration.
@@ -40,8 +38,59 @@ public class Bootstrap{
     /**
      * Logger.
      */
-    private static final Logger LOGGER =
-        LoggerFactory.getLogger(Bootstrap.class);
-
+    private static final Logger LOGGER = LoggerFactory.getLogger(Bootstrap.class);
     
+	@Autowired
+	private JobLauncher jobLauncher;
+	/**
+	 * Data Job.
+	 */
+	@Autowired
+	private Job job;
+	
+	@Value("${duration}")
+    private String duration;
+	
+	@Value("${threshold}")
+    private String threshold;
+	
+	@Value("${startDate}")
+    private String startDate;
+
+    /**
+	 * Initialization Method.
+	 */
+	@PostConstruct
+	private void init() {
+		try {
+			
+			if(!StringUtils.hasLength(startDate)){
+				throw new RuntimeException("Missing parameter: 'startDate'");
+			}
+			if(!StringUtils.hasLength(threshold)){
+				throw new RuntimeException("Missing parameter: 'threshold'");
+			}
+			if(!StringUtils.hasLength(duration)){
+				throw new RuntimeException("Missing parameter: 'duration'");
+			}
+			
+			long start = System.currentTimeMillis();
+			LOGGER.info("<<<<<<<<<<<<<START>>>>>>>>>>>>>>: " + new Date(start));
+			JobParameters jobParams = new JobParameters();
+			JobExecution execution = this.jobLauncher.run(this.job, jobParams);
+
+			LOGGER.info("<<<<<<<<<<<<<Exit Status>>>>>>>>>>>>>>: " + execution.getStatus());
+
+			long end = System.currentTimeMillis();
+			LOGGER.info("<<<<<<<<<<<<<END>>>>>>>>>>>>>>: " + new Date(end));
+
+			LOGGER.info("<<<<<<<<<<<<<TIME IN MILLIS:>>>>>>>>>>>>>>" + (end - start));
+
+			System.exit(0);
+		} catch (JobExecutionAlreadyRunningException | JobRestartException | JobInstanceAlreadyCompleteException
+				| JobParametersInvalidException ex) {
+			LOGGER.error("Error", ex);
+		}
+	}
+
 }

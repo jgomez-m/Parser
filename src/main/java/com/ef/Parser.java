@@ -14,9 +14,6 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 public class Parser {
     
-    private static final Logger LOGGER =
-            LoggerFactory.getLogger(Parser.class);
-    
     /**
      * Main Method.
      *
