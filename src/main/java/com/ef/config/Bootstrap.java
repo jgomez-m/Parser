@@ -63,28 +63,11 @@ public class Bootstrap{
 	@PostConstruct
 	private void init() {
 		try {
-			
-			if(!StringUtils.hasLength(startDate)){
-				throw new RuntimeException("Missing parameter: 'startDate'");
-			}
-			if(!StringUtils.hasLength(threshold)){
-				throw new RuntimeException("Missing parameter: 'threshold'");
-			}
-			if(!StringUtils.hasLength(duration)){
-				throw new RuntimeException("Missing parameter: 'duration'");
-			}
-			
 			long start = System.currentTimeMillis();
 			LOGGER.info("<<<<<<<<<<<<<START>>>>>>>>>>>>>>: " + new Date(start));
 			JobParameters jobParams = new JobParameters();
 			JobExecution execution = this.jobLauncher.run(this.job, jobParams);
-
 			LOGGER.info("<<<<<<<<<<<<<Exit Status>>>>>>>>>>>>>>: " + execution.getStatus());
-
-			long end = System.currentTimeMillis();
-			LOGGER.info("<<<<<<<<<<<<<END>>>>>>>>>>>>>>: " + new Date(end));
-
-			LOGGER.info("<<<<<<<<<<<<<TIME IN MILLIS:>>>>>>>>>>>>>>" + (end - start));
 
 			System.exit(0);
 		} catch (JobExecutionAlreadyRunningException | JobRestartException | JobInstanceAlreadyCompleteException
