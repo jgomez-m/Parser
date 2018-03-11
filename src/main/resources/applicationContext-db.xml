@@ -2,7 +2,14 @@
        xmlns:jdbc="http://www.springframework.org/schema/jdbc"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-	http://www.springframework.org/schema/beans/spring-beans.xsd">
+	   http://www.springframework.org/schema/beans/spring-beans.xsd 
+	   http://www.springframework.org/schema/jdbc
+       http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd">
+	
+	<jdbc:initialize-database data-source="dataSource">
+       <jdbc:script location="file:config/create_schema.sql" />
+	</jdbc:initialize-database>
+	
 
     <!-- Datasource configuration. -->    
     <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">

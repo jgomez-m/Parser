@@ -10,7 +10,7 @@
 	<batch:job id="dataJob">
 		<batch:step id="step1" next="step2">
 			<batch:tasklet>
-				<batch:chunk reader="cvsFileItemReader" processor="itemProcessor"
+				<batch:chunk reader="fileItemReader" processor="itemProcessor"
 					writer="mysqlItemWriter" commit-interval="${batch.process.commit.interval}">
 				</batch:chunk>
 			</batch:tasklet>
@@ -26,11 +26,11 @@
 
 	<bean id="itemProcessor" class="com.ef.processor.ItemRecordProcessor" />
 
-	<!-- CSV Reader -->
-	<bean id="cvsFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader">
+	<!-- File Reader -->
+	<bean id="fileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader">
 
 		<!-- Read a csv file -->
-		<property name="resource" value="file:${batch.process.csv.file}" />
+		<property name="resource" value="file:${accesslog}" />
 
 		<property name="lineMapper">
 			<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
