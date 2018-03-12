@@ -1,0 +1,9 @@
+-The JAR file is in target/ folder
+
+- SQL querys requested are in: SQL/ folder
+
+- This project was built using Sprint Batch and it allows to receive parameters like those:
+
+--accesslog=/path/to/file --startDate=2017-01-01.13:00:00 --duration=hourly --threshold=100 
+
+- The access.log test file is not present in this file to decrease the file size
